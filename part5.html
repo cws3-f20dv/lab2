@@ -16,8 +16,8 @@
         <p class="lead">Calum Shepherd - H00292866</p>
         <hr />
 
-        <!-- Exercise  18/19/20/21 -->
-        <h5>Exercise 18/19/20/21</h5>
+        <!-- Exercise  18/19/20 -->
+        <h5>Exercise 18/19/20</h5>
         <button onclick="update(data1, 'red')">Variable 1</button>
         <button onclick="update(data2, 'green')">Variable 2</button>
         <button onclick="update(data3, 'blue')">Variable 3</button>
@@ -71,7 +71,7 @@
 
             // Add Y axis
             var y = d3.scaleLinear()
-                .domain([0, d3.max(data, function (d) { return d.value; })])
+                .domain([0, 20])
                 .range([ height, 0]);
             svg.append("g")
                 .call(d3.axisLeft(y))
