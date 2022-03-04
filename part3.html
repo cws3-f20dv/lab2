@@ -16,11 +16,160 @@
         <p class="lead">Calum Shepherd - H00292866</p>
         <hr />
 
-        <!-- Exercise  6 -->
-        <h5>Exercise 6</h5>
+        <!-- Exercise  6/7 -->
+        <h5>Exercise 6/7/8</h5>
         <script>
-            // Prints the D3 version to the console
-            console.log('d3.version:', d3.version);
+            d3.select('body')
+              .append("div")
+              .style('width',  '100px')
+              .style('height', '100px')
+              .style('background-color', 'blue')
+              .transition()
+              .duration(1000)
+              .style("background-color", "red")
+              .transition()
+              .duration(2000)
+              .style("background-color", "green")
+              .style('width',  '200px')
+              .style('height', '200px');
+        </script>
+
+        <!-- Exercise  8 -->
+        <script>
+            let div = d3.select('body')
+                .append("div")
+                .style('width',  '100px')
+                .style('height', '100px')
+                .style('background-color', 'steelblue');
+
+            div.on("mouseover", function(event) {
+                d3.select(this)
+                .transition()
+                .duration(1000)
+                .style("background-color", "pink")
+                .transition()
+                .duration(2000)
+                .style("background-color", "seagreen")
+                .style('width',  '200px')
+                .style('height', '200px');
+            });
+        </script>
+
+        <!-- Exercise  9 -->
+        <script>
+            d3.select('body')
+                .append("div")
+                .style('width',  '100px')
+                .style('height', '100px')
+                .style('background-color', 'orange')
+                .transition()
+                .ease(d3.easeBounce)
+                .duration(2500)
+                .style("background-color", "black")
+
+            d3.select('body')
+                .append("div")
+                .style('width',  '100px')
+                .style('height', '100px')
+                .style('background-color', 'orange')
+                .transition()
+                .ease(d3.easeExp)
+                .duration(2500)
+                .style("background-color", "black");
+        </script>
+
+        <script>
+            var svg = d3.select("body")
+                .append("svg")
+                .attr('width',  200)
+                .attr('height', 300)
+                .append("g");
+
+            svg.append("circle")
+                .attr("cx", 100)
+                .attr("cy", 100)
+                .attr("r", 50)
+                .style("fill", "red")
+                .attr("class", "enlarge");
+
+            d3.selectAll(".enlarge")
+                .on("mouseover", function(event){
+                    d3.select(this)
+                    .transition()
+                    .ease(d3.easeBounce)
+                    .duration(2500)
+                    .attr("r", 75)
+                })
+                .on("mouseout", function(){
+                    d3.select(this)
+                    .transition()
+                    .ease(d3.easeBounce)
+                    .duration(2500)
+                    .attr("r", 50)
+            });
+
+            svg.append("text")
+                .attr("font-size", "1em")
+                .attr("x", 50)
+                .attr("y", 250)
+                .text("Test")
+                .on("mouseover", function(event) {
+                    d3.select(this)
+                    .transition()
+                    .ease(d3.easeBounce)
+                    .duration(1000)
+                    .attr("font-size", "1.4em");
+                })
+                .on("mouseout", function() {
+                    d3.select(this)
+                    .transition()
+                    .ease(d3.easeBounce)
+                    .duration(1000)
+                    .attr("font-size", "1em");
+            });
+        </script>
+
+        <script>
+            svg = d3.select("body")
+                .append("svg")
+                .attr("width", 500)
+                .attr("height", 500);
+
+
+            var bar1 = svg.append("rect")
+                .attr("fill", "blue")
+                .attr("x", 100)
+                .attr("y", 20)
+                .attr("height", 20)
+                .attr("width", 10)
+
+            var bar2 = svg.append("rect")
+                .attr("fill", "blue")
+                .attr("x", 120)
+                .attr("y", 20)
+                .attr("height", 20)
+                .attr("width", 10)
+
+            var bar3 = svg.append("rect")
+                .attr("fill", "blue")
+                .attr("x", 140)
+                .attr("y", 20)
+                .attr("height", 20)
+                .attr("width", 10)
+
+            update();
+
+            function update()
+            {
+                bar1.transition().ease(d3.easeLinear).duration(2000).attr("height",100).style("fill", "red")
+                    .transition().ease(d3.easeLinear).duration(2000).delay(6000).style("fill", "blue").attr("height", 20);
+
+                bar2.transition().ease(d3.easeLinear).duration(2000).delay(2000).attr("height",100).style("fill", "red")
+                    .transition().ease(d3.easeLinear).duration(2000).delay(6000).style("fill", "blue").attr("height", 20);
+
+                bar3.transition().ease(d3.easeLinear).duration(2000).delay(4000).attr("height",100).style("fill", "red")
+                    .transition().ease(d3.easeLinear).duration(2000).delay(6000).style("fill", "blue").attr("height", 20);
+            }
         </script>
         <hr />
     </div>
